@@ -77,6 +77,7 @@ pPrecio.nextElementSibling.setAttribute("class", "segundaPdeCarrito");
 const spanPrecio = document.querySelector(".segundaPdeCarrito > span");
 
 const cateM = productos.filter(producto => producto.categoría === 'Maquillajes');
+
 const cateCapilar = productos.filter(producto => producto.categoría === 'Productos capilares');
 const cateCorporal = productos.filter(producto => producto.categoría === 'Cuidado corporal');
 
@@ -124,7 +125,9 @@ function estructura (array) {
     const boton = document.createElement('button');
     boton.innerText = "Agregar";
     boton.addEventListener("click", sumarC);
-    boton.addEventListener("click", abrirModalProducto);
+    boton.addEventListener("click", () =>{
+        abrirModalProducto(p);
+    });
     
     div3.append(h3, p1, p2, p3, boton);
 
@@ -153,8 +156,6 @@ function sumarC () {
 
 
 //modal producto
-function abrirModalProducto () {
-   
     const modalProducto = document.querySelector(".modal");
     modalProducto.setAttribute("id", "modalProducto");
     
@@ -185,15 +186,15 @@ function abrirModalProducto () {
     const modalAgregar = document.querySelector(".modal-footer > button");
     modalAgregar.innerHTML = "Agregar";
 
+    function abrirModalProducto (producto) {
     modalProducto.style.display = "block";
     botonCerrar.addEventListener("click", cerrarModal);
-
+        console.log(producto)
     function cerrarModal () {
-        modalProducto.style.display = "none";
+        modalProducto.style.display = "none";  
     }
-    // modalAgregar.classList.toggle("inactive");
-    
-}
+    }
 
+    
 
 

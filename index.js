@@ -161,7 +161,7 @@ function sumarC () {
     
     const modalTituloProducto = document.querySelector(".modal-title");
     modalTituloProducto.innerHTML = "producto.nombre";
-    
+        
     const botonCerrar = document.querySelector(".btn-close")
     botonCerrar.innerHTML = "X";
 
@@ -187,10 +187,23 @@ function sumarC () {
     modalAgregar.innerHTML = "Agregar";
 
     function abrirModalProducto (producto) {
-    modalProducto.style.display = "block";
-    botonCerrar.addEventListener("click", cerrarModal);
+        modalProducto.style.display = "block";
+        modalTituloProducto.innerHTML = producto.nombre;
+        //como hacer?imagen
+        
+        const modalImg = document.createElement("img");
+        modalBody.before(modalImg);
+        modalImg.setAttribute("src", producto.imagen);
+        modalImg.setAttribute("alt", producto.nombre);
+       
+        modalDescripcionProducto.innerHTML = producto.descripcion;
+        modalSpanPrecio.innerHTML = producto.precio;
+        modalCategoria.innerHTML = `Categoria: ${producto.categoría}`;
+
+        botonCerrar.addEventListener("click", cerrarModal);
         console.log(producto)
-    function cerrarModal () {
+
+        function cerrarModal () {
         modalProducto.style.display = "none";  
     }
     }

@@ -65,6 +65,17 @@ const aCorporal = aCapilares.nextElementSibling;
 aCorporal.setAttribute("class", "linkCorporal");
 
 
+//carrito
+const pCarrito = document.querySelector("#miniCarrito > p:first-of-type");
+pCarrito.setAttribute("class", "primerPdeCarrito");
+
+const spanItem = pCarrito.querySelector("span");
+
+const pPrecio = document.querySelector(".primerPdeCarrito");
+pPrecio.nextElementSibling.setAttribute("class", "segundaPdeCarrito");
+
+const spanPrecio = document.querySelector(".segundaPdeCarrito > span");
+
 const cateM = productos.filter(producto => producto.categoría === 'Maquillajes');
 const cateCapilar = productos.filter(producto => producto.categoría === 'Productos capilares');
 const cateCorporal = productos.filter(producto => producto.categoría === 'Cuidado corporal');
@@ -112,6 +123,7 @@ function estructura (array) {
 
     const boton = document.createElement('button');
     boton.innerText = "Agregar";
+    boton.addEventListener("click", sumarC);
     boton.addEventListener("click", abrirModalProducto);
     
     div3.append(h3, p1, p2, p3, boton);
@@ -133,7 +145,11 @@ function mostrarCorporal () {
     estructura(cateCorporal);
 };
 
-
+let cantidad = 0;
+function sumarC () {
+ cantidad = cantidad + 1;
+ spanItem.innerHTML = cantidad;
+};
 
 
 //modal producto

@@ -251,6 +251,9 @@ function estructuraModalCarrito() {
         const btnCerrarCarrito = document.querySelector("#modalCarrito .btn-close");
         btnCerrarCarrito.addEventListener("click", cerrarModalC);
 
+        const botonAceptar = document.querySelector("#modalCarrito .modal-footer > button");
+        botonAceptar.addEventListener("click", cerrarModalC);
+        
         const modalBodyCarrito = document.querySelector("#modalCarrito .modal-body");   
         
         for(let agregado of agregados){ 
@@ -275,7 +278,6 @@ function estructuraModalCarrito() {
             suma += agregado.precio;
             precioModal.innerHTML = suma;
             
-         
             }
         }
 

@@ -10,7 +10,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     </head>
     <body>
-        <div id="contenedorModalPr">
+      <div id="contenedorModalPr">
         <div class="modal" tabindex="-1">
             <div class="modal-dialog">
               <div class="modal-content">
@@ -23,11 +23,33 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  
                 </div>
               </div>
             </div>
           </div>
-        </div>
+      </div>
+
+        <div class="modal" tabindex="-1" id="modalCarrito">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h3 class="modal-title">Carrito</h3>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <p>Items: <span class="itemModal"></span> - Total: $<span class="totalC"></span></p>
+                  <hr />
+                  <ul class="ul-carrito">
+                    <!-- <li><p class="li-carrito"></p><span class="precio-carrito"></span><span class="items-carrito"></span> <a href="">Eliminar</a></li> -->
+                  </ul>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
         <header>
             <h1>Programación I | Parcial 2 | APELLIDO/S | Mi carrito</h1>
         </header>
@@ -37,7 +59,6 @@
                 <p>$<span>0</span> es el total</p>
                 <p><a href="#">Maquillajes</a> | <a href="#">Productos capilares</a> | <a href="#">Cuidado corporal</a></p>
                 <button>Ver carrito</button>
-                <p class="p"></p>
             </div>
             <h2>Productos</h2>
             <div id="listaProductos"></div>

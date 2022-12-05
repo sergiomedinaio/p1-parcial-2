@@ -55,6 +55,8 @@ let productos = [
     },
 ];
 
+
+
 const aMaquillajes = document.querySelector("#miniCarrito > p > a");
 aMaquillajes.setAttribute("class", "linkMaquillajes");
 
@@ -66,6 +68,8 @@ aCorporal.setAttribute("class", "linkCorporal");
 
 
 //carrito
+let itemC = 0;
+
 const pCarrito = document.querySelector("#miniCarrito > p:first-of-type");
 pCarrito.setAttribute("class", "primerPdeCarrito");
 
@@ -76,8 +80,16 @@ pPrecio.nextElementSibling.setAttribute("class", "segundaPdeCarrito");
 
 const spanPrecio = document.querySelector(".segundaPdeCarrito > span");
 
-const cateM = productos.filter(producto => producto.categoría === 'Maquillajes');
+const modalItemsCarrito = document.querySelector("#modalCarrito .items-carrito");
+    
+    function sumarItemsCarrito () {
+        itemC = itemC + 1;
+        modalItemsCarrito.innerHTML = itemC;
+    }
 
+
+//categorias
+const cateM = productos.filter(producto => producto.categoría === 'Maquillajes');
 const cateCapilar = productos.filter(producto => producto.categoría === 'Productos capilares');
 const cateCorporal = productos.filter(producto => producto.categoría === 'Cuidado corporal');
 
@@ -90,6 +102,7 @@ botonMostrarCapilar.addEventListener("click", mostrarCapilar);
 
 const botonMostrarCorporal = document.querySelector(".linkCorporal");
 botonMostrarCorporal.addEventListener("click", mostrarCorporal);
+
 
 
 function estructura (array) {
@@ -123,15 +136,22 @@ function estructura (array) {
     p3.innerText = `Categoría: ${p.categoría}`;
 
     const boton = document.createElement('button');
-    boton.innerText = "Agregar";
-    boton.addEventListener("click", sumarC);
+    boton.innerText = "Mostrar";
+    
+    const botonAgregar = document.createElement('button');
+    botonAgregar.innerText = "Agregar al carrito"
+    botonAgregar.addEventListener("click", ()=>{
+        sumarC(p)
+    })
+
     boton.addEventListener("click", () =>{
         abrirModalProducto(p);
     });
     
-    div3.append(h3, p1, p2, p3, boton);
+    div3.append(h3, p1, p2, p3, boton, botonAgregar);
 
     listaP.appendChild(div1);
+    
     
 };
 };
@@ -148,66 +168,119 @@ function mostrarCorporal () {
     estructura(cateCorporal);
 };
 
-let cantidad = 0;
-function sumarC () {
- cantidad = cantidad + 1;
- spanItem.innerHTML = cantidad;
-};
 
+let cantidad = 0;
+function sumarC (p) {
+    cantidad = cantidad + 1;
+    agregados.push(p);
+    
+    spanItem.innerHTML = cantidad;
+   
+   };
 
 //modal producto
-    const modalProducto = document.querySelector(".modal");
-    modalProducto.setAttribute("id", "modalProducto");
+const modalProducto = document.querySelector(".modal");
+modalProducto.setAttribute("id", "modalProducto");
     
-    const modalTituloProducto = document.querySelector(".modal-title");
-    modalTituloProducto.innerHTML = "producto.nombre";
+const modalTituloProducto = document.querySelector(".modal-title");
+modalTituloProducto.innerHTML = "producto.nombre";
         
-    const botonCerrar = document.querySelector(".btn-close")
-    botonCerrar.innerHTML = "X";
+const botonCerrar = document.querySelector("#contenedorModalPr .btn-close");
 
-    const modalBody = document.querySelector(".modal-body");
+const modalImg = document.createElement("img");
+const modalBody = document.querySelector(".modal-body");
 
-    const modalDescripcionProducto = document.querySelector(".modal-body > p");
-    modalDescripcionProducto.innerHTML = "producto.descripcion";
+const modalDescripcionProducto = document.querySelector(".modal-body > p");
+modalDescripcionProducto.innerHTML = "producto.descripcion";
     
-    const modalPrecio = document.createElement("p");
-    modalBody.appendChild(modalPrecio);
-    modalPrecio.innerHTML = "Precio: $";
+const modalPrecio = document.createElement("p");
+modalBody.appendChild(modalPrecio);
+modalPrecio.innerHTML = "Precio: $";
 
-    const modalSpanPrecio = document.createElement("span");
-    modalPrecio.appendChild(modalSpanPrecio);
+const modalSpanPrecio = document.createElement("span");
+modalPrecio.appendChild(modalSpanPrecio);
 
-    modalSpanPrecio.innerHTML = "producto.precio";
+modalSpanPrecio.innerHTML = "producto.precio";
 
-    const modalCategoria = document.createElement("p");
-    modalBody.append(modalCategoria);
-    modalCategoria.innerHTML = "producto.categoria";
+const modalCategoria = document.createElement("p");
+modalBody.append(modalCategoria);
+modalCategoria.innerHTML = "producto.categoria";
 
-    const modalAgregar = document.querySelector(".modal-footer > button");
-    modalAgregar.innerHTML = "Agregar";
+const modalboton = document.querySelector("#contenedorModalPr .modal-footer > button");
+modalboton.style.display = "none";
 
-    function abrirModalProducto (producto) {
+function cerrar () {
+    modalProducto.style.display = "none"
+}
+
+let agregados = [];
+let listadoNombres = [];
+
+
+function abrirModalProducto (producto) {
+
         modalProducto.style.display = "block";
         modalTituloProducto.innerHTML = producto.nombre;
-        //como hacer?imagen
         
-        const modalImg = document.createElement("img");
         modalBody.before(modalImg);
+
         modalImg.setAttribute("src", producto.imagen);
         modalImg.setAttribute("alt", producto.nombre);
        
         modalDescripcionProducto.innerHTML = producto.descripcion;
         modalSpanPrecio.innerHTML = producto.precio;
         modalCategoria.innerHTML = `Categoria: ${producto.categoría}`;
-
-        botonCerrar.addEventListener("click", cerrarModal);
-        console.log(producto)
-
-        function cerrarModal () {
-        modalProducto.style.display = "none";  
+        
+        botonCerrar.addEventListener("click", cerrar);
+        
     }
-    }
+   
+       
+const botonCarrito = document.querySelector("#miniCarrito > button");
+botonCarrito.addEventListener("click", estructuraModalCarrito);
+//ver carrito
 
-    
+let nombres = [];
+let item = 0;
+let suma = 0;
 
+function estructuraModalCarrito() {
+        const modalCarrito = document.getElementById("modalCarrito");
+        modalCarrito.style.display = "block";
 
+        const btnCerrarCarrito = document.querySelector("#modalCarrito .btn-close");
+        btnCerrarCarrito.addEventListener("click", cerrarModalC);
+
+        const modalBodyCarrito = document.querySelector("#modalCarrito .modal-body");   
+        
+        for(let agregado of agregados){ 
+            agregados = [];
+
+            item = item + 1;
+            const itemModal = document.querySelector(".itemModal");
+            itemModal.innerHTML = item; 
+
+            const ulCarrito = document.querySelector(".ul-carrito");
+            const liCarrito = document.createElement("li");
+            ulCarrito.appendChild(liCarrito);
+            liCarrito.innerHTML = agregado.nombre;
+            listadoNombres = nombres.push(agregado.nombre)
+            
+            const spanPrecio = document.createElement("span");
+            liCarrito.appendChild(spanPrecio);
+            spanPrecio.innerHTML = `$${agregado.precio}`;
+
+            const precioModal = document.querySelector(".totalC");
+            
+            suma += agregado.precio;
+            precioModal.innerHTML = suma;
+            
+         
+            }
+        }
+
+        function cerrarModalC () {
+            modalCarrito.style.display = "none";
+        };
+        
+     

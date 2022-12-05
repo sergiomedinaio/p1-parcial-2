@@ -384,7 +384,9 @@ input[type='submit']:hover {
 .modal li span {
     font-size: 1em;
 }
-
+.modal li p {
+    font-size: 1em;
+}
 /**
  *	Web
  */

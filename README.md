@@ -4,7 +4,7 @@
 
 Para la entrega del presente parcial, se debe crear un repositorio en GitHub respetando ciertas nomenclaturas y pautas:
 
-- El repositorio debe ser personal y tener el nombre: `p1-parcial-1-dw[m|t|n]2[a|b|c]`.
+- El repositorio debe ser personal y tener el nombre: `p1-parcial-2-dw[m|t|n]2[a|b|c]`.
 - Dentro del `README.md` deben figurar todos los contribuyentes del trabajo (máximo dos persona).
 - Se hará una entrega a la tarea en **Classroom** con el link al repositorio, **no a una carpeta de Drive**. No se aceptará ningún otro tipo de entrega.
 - **En caso de incumplir con el formato del nombre, se restarán automáticamente dos puntos, pudiendo desaprobar por este error el parcial**.

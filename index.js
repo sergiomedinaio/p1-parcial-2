@@ -78,7 +78,6 @@ const spanItem = pCarrito.querySelector("span");
 const pPrecio = document.querySelector(".primerPdeCarrito");
 pPrecio.nextElementSibling.setAttribute("class", "segundaPdeCarrito");
 
-const spanPrecio = document.querySelector(".segundaPdeCarrito > span");
 
 const modalItemsCarrito = document.querySelector("#modalCarrito .items-carrito");
     
@@ -103,9 +102,12 @@ botonMostrarCapilar.addEventListener("click", mostrarCapilar);
 const botonMostrarCorporal = document.querySelector(".linkCorporal");
 botonMostrarCorporal.addEventListener("click", mostrarCorporal);
 
-
+let sumaPrecio = 0;
 
 function estructura (array) {
+
+    
+
     const listaP = document.querySelector('#listaProductos');
     listaP.innerHTML = "";
     
@@ -213,10 +215,6 @@ function cerrar () {
     modalProducto.style.display = "none"
 }
 
-let agregados = [];
-let listadoNombres = [];
-
-
 function abrirModalProducto (producto) {
 
         modalProducto.style.display = "block";
@@ -232,17 +230,16 @@ function abrirModalProducto (producto) {
         modalCategoria.innerHTML = `Categoria: ${producto.categoría}`;
         
         botonCerrar.addEventListener("click", cerrar);
-        
     }
    
-       
 const botonCarrito = document.querySelector("#miniCarrito > button");
 botonCarrito.addEventListener("click", estructuraModalCarrito);
 //ver carrito
 
-let nombres = [];
+let agregados = [];
 let item = 0;
 let suma = 0;
+let index = 0;
 
 function estructuraModalCarrito() {
         const modalCarrito = document.getElementById("modalCarrito");
@@ -260,6 +257,7 @@ function estructuraModalCarrito() {
             agregados = [];
 
             item = item + 1;
+          
             const itemModal = document.querySelector(".itemModal");
             itemModal.innerHTML = item; 
 
@@ -267,22 +265,39 @@ function estructuraModalCarrito() {
             const liCarrito = document.createElement("li");
             ulCarrito.appendChild(liCarrito);
             liCarrito.innerHTML = agregado.nombre;
-            listadoNombres = nombres.push(agregado.nombre)
-            
+           
             const spanPrecio = document.createElement("span");
             liCarrito.appendChild(spanPrecio);
             spanPrecio.innerHTML = `$${agregado.precio}`;
-
+           
+            const botonEliminar = document.createElement("button");
+            liCarrito.appendChild(botonEliminar);
+            botonEliminar.innerHTML = "Eliminar";
+            botonEliminar.addEventListener("click", ()=>{
+                eliminarItem()});
+                
             const precioModal = document.querySelector(".totalC");
-            
             suma += agregado.precio;
             precioModal.innerHTML = suma;
-            
+
+            sumaPrecio += agregado.precio;
+
+            function eliminarItem() {
+                console.log(agregados)
+                agregados.splice(0,1);
+                liCarrito.innerHTML = "";
+               console.log(agregados)
             }
+            };
+            
+            const precioTotal = document.querySelector(".segundaPdeCarrito > span");
+            precioTotal.innerText = sumaPrecio;
         }
+        
 
         function cerrarModalC () {
             modalCarrito.style.display = "none";
         };
         
-     
+       
+        console.log(agregados.length)

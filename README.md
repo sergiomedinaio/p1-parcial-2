@@ -1,3 +1,5 @@
+ Lopez Agustina
+
 # Parcial 2
 
 ## Consignas de entrega

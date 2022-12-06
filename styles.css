@@ -62,7 +62,17 @@ h2,
 h3 {
     margin: 1em 0;
     font-size: 3em;
-    color: #134f5c;
+}
+
+h3 {
+     color: #eeeeee;
+}
+
+h2 {
+    padding: 3em;
+    justify-self: center;
+    align-self: center;
+    
 }
 
 /**	Main */
@@ -79,7 +89,6 @@ ul,
 ol {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     align-items: flex-start;
     width: 100%;
 }
@@ -129,6 +138,14 @@ ol li em {
     font-style: italic;
 }
 
+main p>a {
+    color: #99154e;
+    text-decoration: none;
+    margin: 2rem;
+}
+main p {
+    margin: 2rem 0;
+}
 form {
     display: flex;
     flex-direction: column;
@@ -175,16 +192,18 @@ input {
 button,
 input[type='button'],
 input[type='submit'] {
-    margin: 0.5em 0;
-    border: none;
+    
+    border: solid 2px transparent;
     border-radius: 0.5em;
-    padding: 0.25em 0.5em;
-    background: #134f5c;
+    padding: 1.5rem;
+    background: #f3eaea;
     cursor: pointer;
-    font-size: 2.4em;
+    font-size: 2rem;
     line-height: 1.5;
     text-align: center;
-    color: #d0e0e3;
+    color: #131313;
+    
+    
 }
 
 input[type='button']:disabled,
@@ -279,6 +298,11 @@ input[type='submit']:hover {
     background: rgba(19, 79, 92, 0.25);
 }
 
+.primerPDeCarrito, .segundaPDeCarrito {
+    color: rgb(76, 76, 77);
+    width: 90%;
+   
+}
 #productos {
     display: flex;
     flex-wrap: wrap;
@@ -288,30 +312,51 @@ input[type='submit']:hover {
     margin: 1em 0;
     width: 100%;
     padding: 1em;
-    background: rgba(19, 79, 92, 0.25);
+    background-color: #99154e;
 }
 
 #productos div {
     display: flex;
     flex-direction: column;
     align-self: center;
-    width: 90%;
+    width: 100%;
     padding: 1em;
 }
 
 #productos img {
-    width: 90%;
-    margin: 1em 5%;
+    width: 70%;
+    margin: auto;
 }
 
 #productos div div {
     padding: 0;
 }
 
-#productos h3,
-#productos p {
+#productos p { 
+    padding-bottom: 1rem;
     margin: 0;
+    text-align: left;
+    font-size: 1.5rem;
+    padding: 0.8rem;
+}
+
+#productos h3{
     text-align: center;
+    font-size: 2rem;
+    padding: 1rem 0 0.5rem 0;
+}
+
+#listaProductos button {
+    font-size: 1.5rem;
+    width: 50%;
+    margin: auto;
+    margin-top: 1.5rem;
+}
+
+.botonAgregar {
+    background: #000000;
+    color: #d0e0e3;
+    font-weight: 600;
 }
 
 .modal {
@@ -361,15 +406,19 @@ input[type='submit']:hover {
 }
 
 .modal img {
-    height: 30%;
+    width: 70%;
+    margin: auto;
+    padding: 0.5rem;
 }
 
 .modal h3,
 .modal p,
 .modal li {
+    text-align: right;
+    font-size: 1.5rem;
     margin: 0;
     text-align: center;
-    color: #d0e0e3;
+    color: #202525;
 }
 
 .modal li {
@@ -382,21 +431,71 @@ input[type='submit']:hover {
 .modal li span {
     font-size: 1em;
 }
+.modal li p {
+    font-size: 1em;
+}
 
+#productos p {
+    color: antiquewhite;
+}
+
+#modalCarrito button{
+    padding: 0.5rem;
+}
+
+#modalCarrito li {
+    justify-content: space-between;
+}
+#modalCarrito span {
+    padding: 1rem;
+}
+
+#modalCarrito .modal-footer button {
+    background: #99154e;
+    border: none;
+    padding: 1rem;
+    font-size: 1rem;
+}
+.verCarrito {
+    font-size: 2rem;
+    font-weight: 500;
+    color: whitesmoke;
+    background: #99154e;
+}
 /**
  *	Web
  */
 @media screen and (min-width: 960px) {
-    #productos {
+
+    #listaProductos {
+        display: flex;
         flex-direction: row;
+        justify-content: space-around;
     }
 
-    #productos div {
-        width: 30%;
+    #productos {
+        align-items: center;
+        justify-content: flex-start; 
+        width: 40%;
+    }
+    
+    #productos div { 
+       margin: auto;
+        align-self: right;
+        width: 100%;  
+        
     }
 
+    #productos img {
+        width: 90%;
+    }
+        
     /**	Footer */
     footer ul {
         flex-direction: row;
+    }
+    
+    .primerPDeCarrito, .segundaPDeCarrito {
+        width: 50%;
     }
 }

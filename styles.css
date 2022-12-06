@@ -62,7 +62,6 @@ h2,
 h3 {
     margin: 1em 0;
     font-size: 3em;
-   
 }
 
 h3 {
@@ -70,7 +69,7 @@ h3 {
 }
 
 h2 {
-    padding: 2rem;
+    padding: 3em;
     justify-self: center;
     align-self: center;
     
@@ -90,7 +89,6 @@ ul,
 ol {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     align-items: flex-start;
     width: 100%;
 }
@@ -140,6 +138,14 @@ ol li em {
     font-style: italic;
 }
 
+main p>a {
+    color: #99154e;
+    text-decoration: none;
+    margin: 2rem;
+}
+main p {
+    margin: 2rem 0;
+}
 form {
     display: flex;
     flex-direction: column;
@@ -292,6 +298,13 @@ input[type='submit']:hover {
     background: rgba(19, 79, 92, 0.25);
 }
 
+.primerPDeCarrito, .segundaPDeCarrito {
+    color: whitesmoke;
+    background-color: #99154e;
+    padding: 1rem;
+    width: 90%;
+   
+}
 #productos {
     display: flex;
     flex-wrap: wrap;
@@ -313,23 +326,39 @@ input[type='submit']:hover {
 }
 
 #productos img {
-    width: 90%;
-    margin: 1em 5%;
-}
-
-#productos p {
-    padding-bottom: 1rem;
-    
+    width: 70%;
+    margin: auto;
 }
 
 #productos div div {
     padding: 0;
 }
 
-#productos h3,
-#productos p {
+#productos p { 
+    padding-bottom: 1rem;
     margin: 0;
+    text-align: left;
+    font-size: 1.5rem;
+    padding: 0.8rem;
+}
+
+#productos h3{
     text-align: center;
+    font-size: 2rem;
+    padding: 1rem 0 0.5rem 0;
+}
+
+#listaProductos button {
+    font-size: 1.5rem;
+    width: 50%;
+    margin: auto;
+    margin-top: 1.5rem;
+}
+
+.botonAgregar {
+    background: #000000;
+    color: #d0e0e3;
+    font-weight: 600;
 }
 
 .modal {
@@ -415,6 +444,7 @@ input[type='submit']:hover {
 #modalCarrito button{
     padding: 0.5rem;
 }
+
 #modalCarrito li {
     justify-content: space-between;
 }
@@ -422,7 +452,17 @@ input[type='submit']:hover {
     padding: 1rem;
 }
 
-
+#modalCarrito .modal-footer button {
+    background: #99154e;
+    border: none;
+    padding: 1rem;
+    font-size: 1rem;
+}
+.verCarrito {
+    font-size: 2rem;
+    font-weight: 500;
+    color: #464646;
+}
 /**
  *	Web
  */
@@ -456,4 +496,7 @@ input[type='submit']:hover {
         flex-direction: row;
     }
     
+    .primerPDeCarrito, .segundaPDeCarrito {
+        width: 50%;
+    }
 }

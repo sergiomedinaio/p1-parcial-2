@@ -71,12 +71,12 @@ aCorporal.setAttribute("class", "linkCorporal");
 let itemC = 0;
 
 const pCarrito = document.querySelector("#miniCarrito > p:first-of-type");
-pCarrito.setAttribute("class", "primerPdeCarrito");
+pCarrito.setAttribute("class", "primerPDeCarrito");
 
 const spanItem = pCarrito.querySelector("span");
 
-const pPrecio = document.querySelector(".primerPdeCarrito");
-pPrecio.nextElementSibling.setAttribute("class", "segundaPdeCarrito");
+const pPrecio = document.querySelector(".primerPDeCarrito");
+pPrecio.nextElementSibling.setAttribute("class", "segundaPDeCarrito");
 
 
 const modalItemsCarrito = document.querySelector("#modalCarrito .items-carrito");
@@ -141,7 +141,9 @@ function estructura (array) {
     boton.innerText = "Mostrar";
     
     const botonAgregar = document.createElement('button');
-    botonAgregar.innerText = "Agregar al carrito"
+    botonAgregar.classList.add("botonAgregar");
+    botonAgregar.innerText = "Agregar al carrito";
+
     botonAgregar.addEventListener("click", ()=>{
         sumarC(p)
     })
@@ -233,6 +235,7 @@ function abrirModalProducto (producto) {
     }
    
 const botonCarrito = document.querySelector("#miniCarrito > button");
+botonCarrito.classList.add("verCarrito");
 botonCarrito.addEventListener("click", estructuraModalCarrito);
 //ver carrito
 
@@ -283,14 +286,21 @@ function estructuraModalCarrito() {
             sumaPrecio += agregado.precio;
 
             function eliminarItem() {
-                console.log(agregados)
                 agregados.splice(0,1);
+                suma -= agregado.precio
+                item = item - 1;
+                cantidad = cantidad - 1;
+                sumaPrecio -= agregado.precio;
+                
+                itemModal.innerHTML = item;
+                spanItem.innerHTML = cantidad;
+                precioModal.innerHTML = suma;
+                precioTotal.innerHTML = sumaPrecio;
                 liCarrito.innerHTML = "";
-               console.log(agregados)
             }
             };
             
-            const precioTotal = document.querySelector(".segundaPdeCarrito > span");
+            const precioTotal = document.querySelector(".segundaPDeCarrito > span");
             precioTotal.innerText = sumaPrecio;
         }
         
@@ -299,5 +309,3 @@ function estructuraModalCarrito() {
             modalCarrito.style.display = "none";
         };
         
-       
-        console.log(agregados.length)

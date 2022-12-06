@@ -62,7 +62,18 @@ h2,
 h3 {
     margin: 1em 0;
     font-size: 3em;
-    color: #134f5c;
+   
+}
+
+h3 {
+     color: #eeeeee;
+}
+
+h2 {
+    padding: 2rem;
+    justify-self: center;
+    align-self: center;
+    
 }
 
 /**	Main */
@@ -175,16 +186,18 @@ input {
 button,
 input[type='button'],
 input[type='submit'] {
-    margin: 0.5em 0;
-    border: none;
+    
+    border: solid 2px transparent;
     border-radius: 0.5em;
-    padding: 0.25em 0.5em;
-    background: #134f5c;
+    padding: 1.5rem;
+    background: #f3eaea;
     cursor: pointer;
-    font-size: 2.4em;
+    font-size: 2rem;
     line-height: 1.5;
     text-align: center;
-    color: #d0e0e3;
+    color: #131313;
+    
+    
 }
 
 input[type='button']:disabled,
@@ -288,20 +301,25 @@ input[type='submit']:hover {
     margin: 1em 0;
     width: 100%;
     padding: 1em;
-    background: rgba(19, 79, 92, 0.25);
+    background-color: #99154e;
 }
 
 #productos div {
     display: flex;
     flex-direction: column;
     align-self: center;
-    width: 90%;
+    width: 100%;
     padding: 1em;
 }
 
 #productos img {
     width: 90%;
     margin: 1em 5%;
+}
+
+#productos p {
+    padding-bottom: 1rem;
+    
 }
 
 #productos div div {
@@ -369,9 +387,11 @@ input[type='submit']:hover {
 .modal h3,
 .modal p,
 .modal li {
+    text-align: right;
+    font-size: 1.5rem;
     margin: 0;
     text-align: center;
-    color: #d0e0e3;
+    color: #202525;
 }
 
 .modal li {
@@ -387,20 +407,53 @@ input[type='submit']:hover {
 .modal li p {
     font-size: 1em;
 }
+
+#productos p {
+    color: antiquewhite;
+}
+
+#modalCarrito button{
+    padding: 0.5rem;
+}
+#modalCarrito li {
+    justify-content: space-between;
+}
+#modalCarrito span {
+    padding: 1rem;
+}
+
+
 /**
  *	Web
  */
 @media screen and (min-width: 960px) {
-    #productos {
+
+    #listaProductos {
+        display: flex;
         flex-direction: row;
+        justify-content: space-around;
     }
 
-    #productos div {
-        width: 30%;
+    #productos {
+        align-items: center;
+        justify-content: flex-start; 
+        width: 40%;
+    }
+    
+    #productos div { 
+       margin: auto;
+        align-self: right;
+        width: 100%;  
+        
     }
 
+    #productos img {
+        width: 90%;
+    }
+        
     /**	Footer */
     footer ul {
         flex-direction: row;
     }
+    
 }
